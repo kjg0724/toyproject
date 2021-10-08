@@ -1,0 +1,64 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+    id 'war'
+}
+
+group = 'co.dearu'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // aop
+    compile 'org.springframework.boot:spring-boot-starter-aop'
+
+    // jaxb
+    compile 'javax.xml.bind:jaxb-api:2.2.4'
+
+    // mqtt
+    compile "org.springframework.integration:spring-integration-mqtt:5.4.2"
+
+    // db
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    // redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    //session
+    implementation 'org.springframework.session:spring-session-data-redis'
+
+    // was
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+    // test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // logback
+    runtimeOnly 'net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1'
+}
+
+test {
+    useJUnitPlatform()
+}

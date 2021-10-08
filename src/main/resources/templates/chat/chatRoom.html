@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Template Title...</title>
+    <link href="/static/css/bootstrap.css" rel="stylesheet" >
+    <link href="/static/css/chat.css" rel="stylesheet" >
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="/static/js/bootstrap.js" ></script>
+    <!--    inline-->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var email=/*[[${email}]]*/
+        var alert_exit = /*[[#{alert-exit}]]*/;
+        var alert_delete = /*[[#{alert-delete}]]*/;
+        var exit = /*[[#{exit}]]*/;
+        var room_id = /*[[${room_id}]]*/;
+        var user_id = /*[[${user_id}]]*/;
+        var userList = /*[[${userList}]]*/;
+        var chat = {
+            "mqtt" :{
+                "host" : /*[[${@environment.getProperty('chat.mqtt.host')}]]*/,
+                "port" : /*[[${@environment.getProperty('chat.mqtt.port')}]]*/
+            }
+        }
+        /*]]>*/
+    </script>
+    <script src="/static/js/mqtt.js" ></script>
+    <script src="/static/js/chat/chatRoom.js"></script>
+</head>
+<body style="margin-top:0px;">
+<header id="chatNav" style="z-index: 100; padding-bottom: 25px;"></header>
+<main class="content">
+    <div class="container p-0" style="margin-bottom: 25px">
+        <h1 class="h3 mb-3">[[#{chatRoom}]]</h1>
+        <div class="card">
+            <div class="row g-0">
+                <div class="col-12 col-lg-5 col-xl-3 border-right" id="userList">
+                   <a href="#" class="list-group-item list-group-item-action border-0">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-grow-1 ml-3 font-weight-bold">
+                                나
+                                <div class="small"><span class="fas fa-circle chat-online">Online</span></div>
+                            </div>
+                            <button class="btn btn-outline-danger" id="deleteMyRoom" style="margin-left:50px;">[[#{exit}]]</button>
+                        </div>
+                    </a>
+                    <hr class="d-block d-lg-none mt-1 mb-0">
+                </div>
+                <div class="col-12 col-lg-7 col-xl-9">
+                    <div class="position-relative">
+                        <div id="lstChat" class="chat-messages p-4">
+                            <div class="chat-message-left pb-4">
+                                <div>
+                                    <div class="text-muted small text-nowrap mt-2"></div>
+                                </div>
+                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                    <div class="font-weight-bold mb-1"></div>
+                                    반가워요!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-0 py-3 px-4 border-top">
+                        <div class="input-group">
+                            <input id="txtMessage" type="text" class="form-control" th:placeholder="#{typeYourMessage}">
+                            <button id="btnSend" class="btn btn-dark">[[#{send}]]</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

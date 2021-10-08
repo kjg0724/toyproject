@@ -1,0 +1,36 @@
+<!--Site Navigation-->
+<script>
+    if(user_id != null){
+        if($(location).attr("pathname").search("chatRoom/") == -1){
+        $('#navbarNavDropdown').append(
+            '<a id="gcl" class="navbar-brand" href="#">user_name(user_email)for Changing user_name</a>' +
+            '<div class="form-inline my-2 my-lg-0">\n' +
+            '        </div>'+
+            '<button id="signOut" class="btn btn-sm btn-outline-danger" type="button">[[#{logOut}]]</button>' +
+            '<button id="dropOut" class="btn btn-sm btn-outline-danger" type="button">[[#{dropOut}]]</button>'
+        );
+        }
+        else{
+            $('#navbarNavDropdown').append('<button id="signOut" class="btn btn-sm btn-outline-danger" type="button">[[#{logOut}]]</button>');
+        }
+    }
+    $('#signOut').click(function (){
+        $(location).attr("href","/account/doSignOut");
+    })
+    $('#gcl').click(function (){
+        $(location).attr("href","/chat/chatRoomList/"+user_id);
+    })
+    $('#dropOut').click(function (){
+        var cf = confirm(alert_dropOut);
+        if(cf){
+           $(location).attr("href","/account/dropOut/"+user_id);
+        }
+    })
+</script>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a id="gcl" class="navbar-brand" href="#">Chat Practice</a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+    </div>
+</nav>

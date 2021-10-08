@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Template Title...</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="/static/js/common.js" crossorigin="anonymous"></script>
+    <script src="/static/js/bootstrap.js" crossorigin="anonymous"></script>
+    <link href="/static/css/bootstrap.css" rel="stylesheet" >
+    <link href="/static/css/signin.css" rel="stylesheet" >
+    <!--    inline-->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var user_id = /*[[${user_id}]]*/;
+        var alert_id = /*[[#{alert-id}]]*/;
+        var alert_pwd = /*[[#{alert-pwd}]]*/;
+        var alert_su_success = /*[[#{alert-su-success}]]*/;
+        var alert_wd_success = /*[[#{alert-wm-success}]]*/;
+        var alert_duplicated = /*[[#{alert-duplicated}]]*/;
+        var alert_ep_mismatch = /*[[#{alert-ep-mismatch}]]*/;
+        var alert_pwd_mismatch = /*[[#{alert-wd-mismatch}]]*/;
+        var alert_not_exist = /*[[#{alert-not-exist}]]*/;
+        var alert_invalid_email = /*[[#{alert-invalid-email}]]*/;
+        /*]]>*/
+    </script>
+</head>
+<body>
+<header id="chatNav"></header>
+<form class="form-signin" id="form-signIn" name="signInForm">
+    <h1 class="h3 mb-3 font-weight-normal align-content-center" >[[#{signIn}]]</h1>
+    <label for="inputEmail" class="sr-only">[[#{email}]]</label>
+    <input type="email" id="inputEmail" name="email" class="form-control"  th:placeholder="#{email}" required autofocus>
+    <label for="inputPassword" class="sr-only">[[#{password}]]</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" th:placeholder="#{password}" required>
+    <button class="btn btn-lg btn-dark btn-block" id="signInSubmit" type="button">[[#{signIn}]]</button>
+    <p class="mt-5 mb-3 text-muted"><a href="/account/signUp">[[#{signUp}]]</a></p>
+</form>
+<form name="submitForm">
+</form>
+</body>
+</html>

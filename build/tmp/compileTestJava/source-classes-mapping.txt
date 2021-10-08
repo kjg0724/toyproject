@@ -1,0 +1,2 @@
+co/dearu/practice/DemoApplicationTests.java
+ co.dearu.practice.DemoApplicationTests

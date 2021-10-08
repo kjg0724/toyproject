@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Template Title...</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="/static/js/common.js" crossorigin="anonymous"></script>
+    <script src="/static/js/bootstrap.js" crossorigin="anonymous"></script>
+    <link href="/static/css/bootstrap.css" rel="stylesheet" >
+    <link href="/static/css/signin.css" rel="stylesheet" >
+    <!--    inline-->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var user_id = /*[[${user_id}]]*/;
+        var alert_wd_success = /*[[#{alert-wd-success}]]*/;
+        var alert_pwd_mismatch = /*[[#{alert-pwd-mismatch}]]*/;
+        /*]]>*/
+    </script>
+</head>
+<body>
+<header id="chatNav"></header>
+<form class="form-signin" id="form-dropOut" name="dropOutForm">
+    <h1 class="h3 mb-3 font-weight-normal align-content-center" >채팅 탈퇴</h1>
+    <input type="hidden" name="user_id" th:value="${user_id}">
+    <label for="inputPassword" class="sr-only">[[#{password}]]</label>
+    <input type="password" id="inputPassword" name="pwd" class="form-control" th:placeholder="#{password}" required>
+    <button class="btn btn-lg btn-dark btn-block" id="dropOutSubmit" type="button">탈퇴</button>
+    <p class="mt-5 mb-3 text-muted"><a th:href="'/chat/chatRoomList/'+${user_id}">채팅목록</a></p>
+</form>
+</body>
+</html>
